@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { DepartmentsModule } from './departments/departments.module';
 import * as dotenv from 'dotenv';
 dotenv.config({ path: 'config.env' });
 @Module({
@@ -14,7 +15,7 @@ dotenv.config({ path: 'config.env' });
     database: process.env.DB_NAME,
     autoLoadEntities: true,
     synchronize: true, // ⚠️ فقط في التطوير
-  }),],
+  }), DepartmentsModule,],
   controllers: [AppController],
   providers: [AppService],
 })
